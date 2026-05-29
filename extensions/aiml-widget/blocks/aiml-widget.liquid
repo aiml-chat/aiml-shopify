@@ -1,0 +1,73 @@
+{% comment %}
+  AIML Chat Widget — Theme App Extension block
+  Inject into storefront via Online Store > Themes > Customize > App embeds
+{% endcomment %}
+
+{% if block.settings.enabled %}
+  <script
+    src="{{ 'https://cdn.aiml.chat/v1/widget.js' }}"
+    data-api-key="{{ block.settings.api_key }}"
+    data-website-id="{{ block.settings.website_id }}"
+    data-position="{{ block.settings.position }}"
+    data-theme="{{ block.settings.theme }}"
+    {% if block.settings.primary_color != '' %}
+      data-primary-color="{{ block.settings.primary_color }}"
+    {% endif %}
+    async
+    defer>
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "AIML Chat",
+  "target": "body",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Enable chat widget",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "api_key",
+      "label": "API Key",
+      "info": "Find your API key in the AIML Chat app"
+    },
+    {
+      "type": "text",
+      "id": "website_id",
+      "label": "Website ID",
+      "info": "Find your Website ID in the AIML Chat app"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Widget position",
+      "options": [
+        { "value": "right", "label": "Bottom right" },
+        { "value": "left", "label": "Bottom left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "theme",
+      "label": "Colour theme",
+      "options": [
+        { "value": "auto", "label": "Auto (follow system)" },
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark" }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary colour",
+      "info": "Override the widget accent colour to match your brand"
+    }
+  ]
+}
+{% endschema %}
