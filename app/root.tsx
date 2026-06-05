@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { boundary } from "@shopify/shopify-app-remix/server";
@@ -40,8 +41,3 @@ export function ErrorBoundary() {
 }
 
 export const headers = (headersArgs: any) => boundary.headers(headersArgs);
-
-function useRouteError() {
-  const { useRouteError: use } = require("@remix-run/react");
-  return use();
-}

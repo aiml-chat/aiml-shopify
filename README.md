@@ -10,8 +10,10 @@ Official Shopify app for [AIML.chat](https://aiml.chat) — AI documentation & w
 
 - Installs a floating AI chat widget on your Shopify storefront via a Theme App Extension
 - Auto-indexes your products, pages, and policies on install
-- Answers customer questions grounded in your store's own content
-- Fully configurable in the Shopify theme customiser (position, theme, colours)
+- Answers customer questions grounded in your store's own content, with clickable source citations
+- Captures a customer's email as a lead when the assistant can't answer
+- Shows suggested questions / an auto-generated FAQ when the chat opens
+- Fully configurable in the Shopify theme customiser (position, theme, brand colour)
 
 ---
 

@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
-import { authenticate } from "../../shopify.server";
+import { authenticate } from "../shopify.server";
 
 // GDPR: Customer data request — Shopify sends this when a customer requests their data.
 // Required for App Store approval.

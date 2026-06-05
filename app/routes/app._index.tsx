@@ -120,10 +120,24 @@ export default function Index() {
                 It appears as a floating chat button on all storefront pages.
               </Text>
               <Text as="p" tone="subdued">
-                To customise the widget (colors, position, greeting message), visit your{" "}
+                To customise the widget (colours, position, greeting message), visit your{" "}
                 <a href="https://aiml.chat/dashboard" target="_blank" rel="noopener noreferrer">
                   AIML.chat dashboard
                 </a>.
+              </Text>
+            </BlockStack>
+          </Card>
+        </Layout.Section>
+
+        <Layout.Section>
+          <Card>
+            <BlockStack gap="300">
+              <Text as="h2" variant="headingMd">What your assistant can do</Text>
+              <Text as="p" tone="subdued">• Answers grounded only in your store content — with clickable source links, no hallucinations.</Text>
+              <Text as="p" tone="subdued">• Captures a customer's email when it can't answer, so you never lose a lead.</Text>
+              <Text as="p" tone="subdued">• Shows suggested questions and an auto-generated FAQ when the chat opens.</Text>
+              <Text as="p" tone="subdued">• See top questions and unanswered queries in your{" "}
+                <a href="https://aiml.chat/dashboard" target="_blank" rel="noopener noreferrer">analytics dashboard</a>.
               </Text>
             </BlockStack>
           </Card>

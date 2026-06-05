@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
-import { authenticate } from "../../shopify.server";
+import { authenticate } from "../shopify.server";
 
 // GDPR: Customer data erasure — Shopify sends this to erase a customer's data.
 // Required for App Store approval.
