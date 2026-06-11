@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+### Added
+- **API Key now shown in the app dashboard** next to the Website ID, with instructions for pasting both
+  into the theme-editor app embed. The embed's settings said "Find your API key in the AIML Chat app",
+  but the app never displayed it — merchants could not complete setup.
+
+### Fixed
+- Type error: `afterAuth` passed `session.accessToken` (possibly `undefined`) to a parameter the
+  function never used — parameter removed.
+
+### Changed
+- **Position and Colour theme now default to "Default (use dashboard setting)"** — appearance configured
+  centrally in the AIML.chat dashboard (colours, avatar, launcher, greeting, auto-open…) applies unless
+  explicitly overridden per store. Previously the block always emitted `data-position`/`data-theme`,
+  permanently overriding the dashboard.
+
 ## [0.2.0] — 2026-06
 
 ### Added

@@ -81,6 +81,14 @@ export default function Index() {
                 <Text as="span">{install?.websiteId ?? "—"}</Text>
               </InlineStack>
               <InlineStack gap="300" align="start">
+                <Text as="span" tone="subdued">API Key:</Text>
+                <Text as="span">{install?.apiKey ?? "—"}</Text>
+              </InlineStack>
+              <Text as="p" tone="subdued">
+                Paste the API Key and Website ID into the AIML Chat app embed in your theme editor
+                (Online Store → Themes → Customize → App embeds) to activate the widget.
+              </Text>
+              <InlineStack gap="300" align="start">
                 <Text as="span" tone="subdued">Status:</Text>
                 <Badge tone={isActive ? "success" : "attention"}>
                   {isActive ? "Active" : "Pending"}

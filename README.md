@@ -13,7 +13,8 @@ Official Shopify app for [AIML.chat](https://aiml.chat) — AI documentation & w
 - Answers customer questions grounded in your store's own content, with clickable source citations
 - Captures a customer's email as a lead when the assistant can't answer
 - Shows suggested questions / an auto-generated FAQ when the chat opens
-- Fully configurable in the Shopify theme customiser (position, theme, brand colour)
+- Appearance (colours, avatar, launcher, greeting, auto-open…) managed centrally in the AIML.chat
+  dashboard, with optional per-store overrides (position, theme, brand colour) in the theme customiser
 
 ---
 

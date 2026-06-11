@@ -1,16 +1,24 @@
 {% comment %}
   AIML Chat Widget — Theme App Extension block
   Inject into storefront via Online Store > Themes > Customize > App embeds
+
+  Appearance (colours, avatar, launcher, greeting, auto-open…) is managed centrally in the
+  AIML.chat dashboard. Settings here are per-store OVERRIDES: when left on "Default", no
+  data-attribute is emitted and the dashboard configuration applies.
 {% endcomment %}
 
 {% if block.settings.enabled %}
   <script
-    src="{{ 'https://cdn.aiml.chat/v1/widget.js' }}"
+    src="https://cdn.aiml.chat/v1/widget.js"
     data-api-key="{{ block.settings.api_key }}"
     data-website-id="{{ block.settings.website_id }}"
-    data-position="{{ block.settings.position }}"
-    data-theme="{{ block.settings.theme }}"
-    {% if block.settings.primary_color != '' %}
+    {% if block.settings.position != blank %}
+      data-position="{{ block.settings.position }}"
+    {% endif %}
+    {% if block.settings.theme != blank %}
+      data-theme="{{ block.settings.theme }}"
+    {% endif %}
+    {% if block.settings.primary_color != blank %}
       data-primary-color="{{ block.settings.primary_color }}"
     {% endif %}
     async
@@ -46,27 +54,29 @@
       "id": "position",
       "label": "Widget position",
       "options": [
+        { "value": "", "label": "Default (use dashboard setting)" },
         { "value": "right", "label": "Bottom right" },
         { "value": "left", "label": "Bottom left" }
       ],
-      "default": "right"
+      "default": ""
     },
     {
       "type": "select",
       "id": "theme",
       "label": "Colour theme",
       "options": [
+        { "value": "", "label": "Default (use dashboard setting)" },
         { "value": "auto", "label": "Auto (follow system)" },
         { "value": "light", "label": "Light" },
         { "value": "dark", "label": "Dark" }
       ],
-      "default": "auto"
+      "default": ""
     },
     {
       "type": "color",
       "id": "primary_color",
       "label": "Primary colour",
-      "info": "Override the widget accent colour to match your brand"
+      "info": "Optional override — leave unset to use the colour from your AIML.chat dashboard"
     }
   ]
 }

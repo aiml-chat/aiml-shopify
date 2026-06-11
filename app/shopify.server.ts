@@ -35,7 +35,7 @@ const shopify = shopifyApp({
     afterAuth: async ({ session }) => {
       shopify.registerWebhooks({ session });
       // Auto-register the store and trigger ingestion
-      await registerStoreWithAiml(session.shop, session.accessToken);
+      await registerStoreWithAiml(session.shop);
     },
   },
   future: {
@@ -46,7 +46,7 @@ const shopify = shopifyApp({
     : {}),
 });
 
-async function registerStoreWithAiml(shop: string, accessToken: string) {
+async function registerStoreWithAiml(shop: string) {
   const apiUrl = process.env.AIML_API_URL ?? "https://api.aiml.chat";
   const serviceToken = process.env.AIML_SERVICE_TOKEN;
   if (!serviceToken) return;
