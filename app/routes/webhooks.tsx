@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 // APP_UNINSTALLED webhook
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const { topic, shop, payload } = await authenticate.webhook(request);
+  const { topic, shop } = await authenticate.webhook(request);
 
   switch (topic) {
     case "APP_UNINSTALLED":

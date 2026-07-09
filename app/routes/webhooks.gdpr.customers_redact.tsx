@@ -1,5 +1,6 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { authenticate } from "../shopify.server";
+import { buildRedactUrl } from "../utils/gdpr";
 
 // GDPR: Customer data erasure — Shopify sends this to erase a customer's data.
 // Required for App Store approval.
@@ -11,7 +12,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const apiUrl = process.env.AIML_API_URL ?? "https://api.aiml.chat";
   const serviceToken = process.env.AIML_SERVICE_TOKEN;
   if (serviceToken && payload?.customer?.email) {
-    await fetch(`${apiUrl}/v1/leads?email=${encodeURIComponent(payload.customer.email)}`, {
+    const url = buildRedactUrl(apiUrl, payload.customer.email, payload.shop_domain);
+    await fetch(url, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${serviceToken}` },
     }).catch(() => {});

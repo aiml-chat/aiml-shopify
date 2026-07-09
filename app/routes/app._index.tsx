@@ -14,6 +14,7 @@ import {
 } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 import { PrismaClient } from "@prisma/client";
+import { triggerReindex } from "../utils/reindex";
 
 const prisma = new PrismaClient();
 
@@ -35,16 +36,13 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       where: { shop: session.shop },
     });
     if (install?.websiteId) {
-      const apiUrl = process.env.AIML_API_URL ?? "https://api.aiml.chat";
-      await fetch(`${apiUrl}/v1/websites/${install.websiteId}/ingest`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.AIML_SERVICE_TOKEN}`,
-        },
-        body: JSON.stringify({ startUrl: `https://${session.shop}` }),
+      const result = await triggerReindex({
+        websiteId: install.websiteId,
+        shop: session.shop,
+        apiUrl: process.env.AIML_API_URL ?? "https://api.aiml.chat",
+        serviceToken: process.env.AIML_SERVICE_TOKEN,
       });
-      return json({ success: true, message: "Re-indexing started." });
+      return json(result);
     }
   }
   return json({ success: false });
